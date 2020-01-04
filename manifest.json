@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+
+  "name": "Memory Leak",
+  "version": "0.1",
+
+  "description": "Memory Leak Detection",
+  "author": "Yoni",
+
+  "devtools_page": "/build/index.html",
+  "permissions": ["system.memory", "debugger", "tabs"]
+}

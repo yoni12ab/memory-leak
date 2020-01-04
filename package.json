@@ -1,0 +1,22 @@
+{
+  "name": "chromedevtoolsextention",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "postbuild": "npm run copy-files",
+    "copy-files": "copyfiles -u 1 src/**/*.html src/**/*.css build/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/chrome": "0.0.91"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "copyfiles": "^2.1.1",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.7.4"
+  }
+}
