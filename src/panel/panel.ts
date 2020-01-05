@@ -1,28 +1,24 @@
-(() => {
-  let output = [];
-  let timeoutHandle = null;
-  main();
+import { takeHeapSnapshot } from '../snapshot.js';
 
-  return;
+main();
 
-  function main() {
-    attachClick();
-  }
+function main() {
+  attachClick();
+}
 
-  function attachClick() {
-    document.querySelector('#startBtn').addEventListener('click', start);
-  }
+function attachClick() {
+  document.querySelector('#startBtn').addEventListener('click', start);
+}
 
-  function parseResults() {
-    const angularFound = [];
-    const results = JSON.parse(output.join(''));
-    console.log('start parsing results', results);
-    for (const key in results.strings) {
-      const value = results.strings[key];
-      if (value.includes('/src/app')) {
-        angularFound.push(`angular: ${key} value: ${results.strings[key]}`);
-      }
+async function start() {
+  const angularFound = [];
+  const results = await takeHeapSnapshot();
+  console.log('start parsing results', results);
+  for (const key in results.strings) {
+    const value = results.strings[key];
+    if (value.includes('/src/app')) {
+      angularFound.push(`angular: ${key} value: ${results.strings[key]}`);
     }
-    console.log('found ', angularFound);
   }
-})();
+  console.log('found ', angularFound);
+}
