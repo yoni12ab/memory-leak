@@ -27,9 +27,7 @@ export async function takeHeapSnapshot(): Promise<SnapshotRoot> {
 
 function getActiveTab(): Promise<Tab> {
   return new Promise<any>((success, failed) => {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([activeTab]) =>
-      success(activeTab)
-    );
+    chrome.tabs.getSelected(activeTab => success(activeTab));
   });
 }
 
